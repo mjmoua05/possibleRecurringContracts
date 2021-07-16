@@ -15,10 +15,10 @@ contract MyContract{
         scheduleTx();
     }
 
-    //function with tasks for transfer and actions to take when time period is up and then after call the function to reschedule again
+    //function with tasks for transfer and actions to take when time period is up 
     function transferTasks() public {
         //payFunction(); etc
-        scheduleTx();
+        scheduleTx(); //call the function to schedule again
     }
 
     //Schedule transactions call
@@ -27,8 +27,6 @@ contract MyContract{
         bytes memory data = abi.encodeWithSelector(bytes4(keccak256('transferTasks()')));
         rTx.schedule(block.timestamp + timeToTx, address(this), 0, data);
     }
-
-
 
 }
 
